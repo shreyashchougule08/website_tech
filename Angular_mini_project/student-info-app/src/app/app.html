@@ -1,0 +1,62 @@
+﻿<main class="app-shell">
+  <section class="student-card">
+    <h1>Student Info</h1>
+
+    <form class="student-form" (submit)="saveStudent(); $event.preventDefault()">
+      <label>
+        Name
+        <input
+          type="text"
+          [value]="studentName()"
+          (input)="setName($any($event.target).value)"
+          placeholder="Enter student name"
+        />
+      </label>
+
+      <label>
+        Class
+        <input
+          type="text"
+          [value]="studentClass()"
+          (input)="setClass($any($event.target).value)"
+          placeholder="Enter class or section"
+        />
+      </label>
+
+      <label>
+        Grade
+        <input
+          type="number"
+          [value]="studentGrade()"
+          (input)="setGrade($any($event.target).value)"
+          min="0"
+          max="100"
+          placeholder="0 to 100"
+        />
+      </label>
+
+      <div class="actions">
+        <button type="submit" [disabled]="!hasFullInfo()">
+          Save student
+        </button>
+        <button type="button" class="secondary" (click)="reset()">
+          Reset
+        </button>
+      </div>
+    </form>
+
+    <section class="summary" *ngIf="saved()">
+      <h2>Saved Info</h2>
+      <p><strong>Name:</strong> {{ studentName() }}</p>
+      <p><strong>Class:</strong> {{ studentClass() }}</p>
+      <p><strong>Grade:</strong> {{ studentGrade() }}</p>
+      <p class="status" [class.pass]="status() === 'Pass'" [class.fail]="status() === 'Fail'">
+        Result: {{ status() || 'Invalid grade' }}
+      </p>
+    </section>
+
+    <p class="hint">
+      Enter the student's name, class, and grade, then click Save. Grade 35 or above is Pass.
+    </p>
+  </section>
+</main>

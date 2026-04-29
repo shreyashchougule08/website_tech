@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>getElementById Example</title>
+</head>
+<body>
+
+  <h2 id="msg">Hello</h2>
+  <button onclick="changeText()">Change Text</button>
+
+  <script>
+    function changeText() {
+      document.getElementById("msg").innerHTML = "Text Changed";
+    }
+  </script>
+
+</body>
+</html>
+
+<!-- 
+getElementById() is a DOM method.
+It is used to select ONE HTML element.
+It selects the element using its id attribute.
+The id must be unique in the document.
+It returns a single element.
+If the id does not exist, it returns null.
+Commonly used to change text, style, or values. -->

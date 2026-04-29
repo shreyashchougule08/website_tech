@@ -1,0 +1,42 @@
+package list , dependences = part of build,dev dependences=local build
+angular.json
+style.css=globally change css code 
+
+.gitingore=to exectue form version control
+type script
+index.html= main 
+load angular 
+app.config.ts= app congfigure file
+
+main.ts=entry point of application
+
+ componet is ul block or structure
+  when we create one componet: ng g c component name 
+
+data binding =connect ui to code 
+types :one way , two way data binding 
+one way :interpolation , property binding , event binding 
+
+interpolation = show data data from ts in html show data data form in ts in html
+
+============================= Activity =============================
+directives activity:
+when div1 is true, show div 1
+<div *ngIf="div1">Div 1</div>
+when div 2 is not true, show warning
+<div *ngIf="!div2">Div 2 is not true</div>
+
+keep buttons, if pressed "show", show div 1, if pressed "hide", hide div 1
+<button (click)="showDiv1()">Show</button>
+<button (click)="hideDiv1()">Hide</button>
+
+also toggle button, if clicked color of division changes.
+
+--------------------------------------------------------------------------------
+                                      service :
+
+servese is helper class ,it is used to share data between component and also used to call api 
+instead of writing same code in multiple component we can write in service and call it in component
+-------------------------------------------------------------
+ activity 2:
+ write 2 example with services and learn more about dependency injection

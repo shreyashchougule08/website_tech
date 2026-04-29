@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Recommendation System</title>
+</head>
+
+<body style="text-align:center; margin-top:50px;">
+
+<h2>Simple Recommendation System</h2>
+
+<select id="category">
+    <option value="action">Action</option>
+    <option value="romance">Romance</option>
+    <option value="comedy">Comedy</option>
+</select>
+
+<button id="btn">Recommend</button>
+
+<h3 id="result"></h3>
+
+<script>
+
+let button = document.getElementById("btn");
+
+button.addEventListener("click", function(){
+
+    let cat = document.getElementById("category").value;
+
+    let recommendation = "";
+
+    if(cat == "action"){
+        recommendation = "Attack on Titan, Jujutsu Kaisen";
+    }
+    else if(cat == "romance"){
+        recommendation = "Your Name, Horimiya";
+    }
+    else if(cat == "comedy"){
+        recommendation = "Gintama, One Punch Man";
+    }
+
+    document.getElementById("result").innerText =
+        "Recommended: " + recommendation;
+
+});
+
+</script>
+
+</body>
+</html>

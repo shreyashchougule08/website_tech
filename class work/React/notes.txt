@@ -1,0 +1,79 @@
+virtual DOM
+1.react creates the copy of the reaal DOM and keeps it in memory, this is called virtual DOM
+2.
+when data react updates virtual dom
+3.update only changed parts in real dom
+4.high performance
+
+----------Activity 1-----
+1 .what is diffn bet angular and react 
+-> Angular is a full framework with built-in features and uses TypeScript with a strict structure.
+React is a JavaScript library for UI that is flexible and easier to learn.
+React uses Virtual DOM (faster), while Angular uses Real DOM.
+
+2.which one have have high market higpe
+-> React has a higher market share and is more widely adopted than Angular.
+
+3.whay react created
+-> React was created by Facebook to build user interfaces more efficiently and to solve issues with performance and maintainability in large applications.
+------------------------------------------
+ vite - fast build tool
+npm install means - install dependencies
+npm run dev -start server
+
+jsx - javascript + xml it allows to write html code in javascript
+Rule-1.must return single parent
+Rule-2. use scope bracket for javascript code
+
+
+          componet is heart of react
+1.functional component in react
+example - functionstudent(){
+    return <h1>this is functional comp</h1>
+}
+use component - function app(){
+    return <> <student/> </>
+}
+------------------------------------------------
+props - properties
+means-data pass parent to child
+example-function app(){
+    return <student name="shrey"/>
+}
+function student(props){
+    return <h1>my name is {props.name}</h1>
+}
+
+---------activity 2------
+1.what is comp and types of comp,where we use comp in react ,with 2 example
+->A component is a small, reusable piece of UI (like a button, header, form). It helps break the UI into manageable parts.
+types of components:
+1.Functional components: These are simple JavaScript functions that return JSX. They are easier to
+write and understand. Example:
+function Greeting() {
+  return <h1>Hello, World!</h1>;
+}
+2.Class components: These are ES6 classes that extend React.Component and have a render method that returns JSX. They can manage state and lifecycle methods. Example:
+class Greeting extends React.Component {
+  render() {
+    return <h1>Hello, World!</h1>;
+  }
+}
+
+
+2.what is props,types,why we use props,with 2 example
+->Props (short for properties) are a way to pass data from a parent component to a child component in React. They are read-only and allow components to be dynamic and reusable.
+Types of props:
+1. Primitive props: These are simple data types like strings, numbers, and booleans. Example:
+function Greeting(props) {
+  return <h1>Hello, {props.name}!</h1>;
+}
+2. Object props: These are more complex data types like arrays and objects. Example:
+function UserProfile(props) {
+  return (
+    <div>
+      <h1>{props.user.name}</h1>
+      <p>Age: {props.user.age}</p>
+    </div>
+  );
+}

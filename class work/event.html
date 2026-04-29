@@ -1,0 +1,119 @@
+<!-- event is an action happens is browser .click ,button ,moving mouse ,submitting form -->
+<!-- // javascript can detect these event and respond the event  -->
+<!-- types of event -click.dbclick.mouseover,mouseout,
+keyborad event - keydown ,keyup
+browser enent - load ,resize,scroll -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Events Demo</title>
+
+    <style>
+        body {
+            background-color: #414141;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 15px;
+        }
+
+        img {
+            width: 200px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        img:hover {
+            transform: scale(1.05);
+        }
+
+        a {
+            color: lightblue;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Amazing Images (Click to Remove)</h2>
+
+    <ul id="images">
+        <li>
+            <img id="photoshop"
+                src="https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg"
+                alt="Photoshop Logo">
+        </li>
+
+        <li>
+            <img id="japan"
+                src="https://images.unsplash.com/photo-1501785888041-af3ef285b470"
+                alt="Mount Fuji">
+        </li>
+
+        <li>
+            <img id="Nature"
+                src="https://images.unsplash.com/photo-1549880338-65ddcdfd017b"
+                alt="Nature Image">
+        </li>
+
+        <li>
+            <img id="photoman"
+                src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee"
+                alt="Photographer">
+        </li>
+
+        <li>
+            <img id="tiger"
+                src="https://images.unsplash.com/photo-1546182990-dffeafbe841d"
+                onclick="alert" html should content logic  hard to build project  
+                alt="Tiger">
+        </li>
+
+        <li>
+            <a href="https://google.com" id="google">Visit Google</a>
+        </li>
+    </ul>
+  </body>
+  <script>
+document.getElementById("photoman").addEventListener("click", function(e)
+{
+    console.log(e);   
+    e.preventDefault(); 
+});
+
+   // select elemnt assign funt to click envent when click funt run .only one event can be assign can not handle multiple listner properly 
+   // event propogation 
+   document.getElementById("images").addEventListener("clicking inside the ul")
+    document.getElementById("photoshop").addEventListener("click ",function()
+    {
+        console.log("click inside the photshop ");
+        
+        // event goes to inner elemnt first and then to outer element
+        // event goes to outer elemnt first and them to inner element
+    });
+    document.getElementById("google"),addEventListener("click",function(e){
+        e.preventDefault();
+        console.log("google clicked");
+    })
+  </script>
+  </html>
+
+
+  <!-- //hm
+  jquery,typestamp,default prevented,target source element ,current target ,(client x ,y),(screen x,y),alt key ,shift key, control key
+  addevent listener is javscript methos used to attach and event handle to an html element so that specfic fun run when a perticular event occur.
+   -->
+  home work - image remove when clicked and refreshed then image recover 

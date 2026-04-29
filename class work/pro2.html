@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Anime Recommendation System</title>
+
+  <style>
+    body {
+      padding: 20px;
+      font-size: 20px;
+    }
+
+    h2 {
+      color: purple;
+    }
+
+    button {
+      margin: 5px;
+      padding: 8px;
+    }
+
+    .anime {
+      margin: 5px 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>Anime Recommendation System</h2>
+  <p>Select anime type:</p>
+
+  <button onclick="romance()">Romance</button>
+  <button onclick="action()">Action</button>
+  <button onclick="fantasy()">Fantasy</button>
+  <button onclick="allAnime()">All</button>
+
+  <h3>Recommended Anime:</h3>
+  <div id="result"></div>
+
+  <script src="animeScript.js"></script>
+</body>
+</html>

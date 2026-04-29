@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>querySelectorAll Example</title>
+</head>
+<body>
+
+  <p class="text">Paragraph 1</p>
+  <p class="text">Paragraph 2</p>
+  <p class="text">Paragraph 3</p>
+
+  <button onclick="changeColor()">Change Color</button>
+
+  <script>
+    function changeColor() {
+      let items = document.querySelectorAll(".text");
+
+      for (let i = 0; i < items.length; i++) {
+        items[i].style.color = "blue";
+      }
+    }
+  </script>
+
+</body>
+</html>
+
+<!-- erySelectorAll() is a DOM method.
+It is used to select MULTIPLE HTML elements.
+It uses CSS selectors (class, tag, id).
+It returns a NodeList (collection of elements).
+All matching elements are selected.
+A loop is required to apply changes to all elements. -->

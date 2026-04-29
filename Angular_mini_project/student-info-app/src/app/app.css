@@ -1,0 +1,97 @@
+﻿:host {
+  display: block;
+  min-height: 100vh;
+  font-family: Inter, system-ui, sans-serif;
+  background: #f3f4f6;
+  color: #111827;
+  padding: 1.5rem;
+}
+.app-shell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+}
+.student-card {
+  width: min(560px, 100%);
+  background: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 24px 80px rgba(15, 23, 42, 0.08);
+  padding: 2rem;
+}
+.student-card h1 {
+  margin: 0 0 1.25rem;
+  font-size: 2rem;
+}
+.student-form {
+  display: grid;
+  gap: 1rem;
+}
+.student-form label {
+  display: grid;
+  gap: 0.5rem;
+  font-weight: 600;
+}
+.student-form input {
+  width: 100%;
+  border: 1px solid #d1d5db;
+  border-radius: 0.75rem;
+  padding: 0.85rem 1rem;
+  font-size: 1rem;
+  outline: none;
+}
+.student-form input:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+}
+.actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+button {
+  border: none;
+  border-radius: 0.75rem;
+  padding: 0.95rem 1.25rem;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+button:not(:disabled) {
+  background: #4f46e5;
+  color: white;
+}
+button.secondary {
+  background: #e5e7eb;
+  color: #111827;
+}
+.summary {
+  margin-top: 1.5rem;
+  padding: 1rem 1.15rem;
+  background: #f9fafb;
+  border-radius: 0.85rem;
+  border: 1px solid #e5e7eb;
+}
+.summary h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.1rem;
+}
+.status {
+  margin: 0.75rem 0 0;
+  font-weight: 700;
+}
+.status.pass {
+  color: #16a34a;
+}
+.status.fail {
+  color: #dc2626;
+}
+.hint {
+  margin-top: 1.25rem;
+  color: #6b7280;
+  font-size: 0.95rem;
+}

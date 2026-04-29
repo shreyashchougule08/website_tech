@@ -1,0 +1,26 @@
+routing refers to determine how an apllication respond yhe client request for specfic url and http method
+component of routing -  1.url path
+2 .http method
+3 .handler function
+
+create 3 or 4 routes
+
+Activty 1 :package . json package log.json
+       2 :diffn bet dev dependens and dependense
+       3.create 3 to 4 routing
+       4.get,put,delete,patch,push
+
+middel ware= in express is a function that execute during request before the sending they final respond 
+they have acces to there are 3 paramters
+1.request 
+2.response 
+3.next       
+
+Activity - 1.why we use middleware
+       2. what is types of middleware
+       3. benfits
+       4.where we use in company level
+
+Activity 2 - 1. detail study about query paramters
+             2. 3 example 
+             3. in comapany where it will use 
