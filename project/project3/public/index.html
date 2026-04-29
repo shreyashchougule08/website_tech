@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>News App</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background: linear-gradient(to right, #667eea, #764ba2);
+            color: white;
+        }
+
+        input {
+            padding: 10px;
+            width: 250px;
+        }
+
+        button {
+            padding: 10px;
+            background: orange;
+            border: none;
+            color: white;
+        }
+
+        #news {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card {
+            background: white;
+            color: black;
+            padding: 15px;
+            margin: 10px;
+            width: 280px;
+            border-radius: 10px;
+        }
+
+        .card img {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>📰 News Search App</h2>
+
+<input type="text" id="search" placeholder="Enter topic">
+<button onclick="getNews()">Search</button>
+
+<p id="loading"></p>
+
+<div id="news"></div>
+
+<script>
+function getNews() {
+
+    let query = document.getElementById("search").value;
+    let loading = document.getElementById("loading");
+    let newsDiv = document.getElementById("news");
+
+    newsDiv.innerHTML = "";
+
+    if (query == "") {
+        alert("Enter topic!");
+        return;
+    }
+
+    loading.innerText = "Loading...";
+
+    fetch("/news?q=" + query)
+    .then(res => res.json())
+    .then(data => {
+
+        loading.innerText = "";
+
+        let articles = data.articles;
+
+        if (articles.length === 0) {
+            newsDiv.innerHTML = "<p>No news found</p>";
+            return;
+        }
+
+        for (let i = 0; i < Math.min(6, articles.length); i++) {
+
+            let div = document.createElement("div");
+            div.className = "card";
+
+            div.innerHTML =
+                "<img src='" + (articles[i].urlToImage || "https://via.placeholder.com/280") + "'>" +
+                "<h4>" + articles[i].title + "</h4>" +
+                "<p>" + (articles[i].description || "No description") + "</p>";
+
+            newsDiv.appendChild(div);
+        }
+    })
+    .catch(() => {
+        loading.innerText = "Error fetching news!";
+    });
+}
+</script>
+
+</body>
+</html>

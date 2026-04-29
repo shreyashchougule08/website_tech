@@ -1,0 +1,4 @@
+middle ware- it is function that run middleware in the
+it can check data,loginfo ,authenticate user
+
+app.use()=

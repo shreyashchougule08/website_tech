@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Booking</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background: linear-gradient(to right, #36d1dc, #5b86e5);
+            color: white;
+            margin: 0;
+        }
+
+        h2 {
+            margin-top: 20px;
+        }
+
+        .form-box {
+            background: white;
+            color: black;
+            width: 300px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        input, select {
+            width: 90%;
+            padding: 10px;
+            margin: 8px 0;
+        }
+
+        button {
+            padding: 10px;
+            background: orange;
+            border: none;
+            color: white;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background: darkorange;
+        }
+
+        #msg {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .card {
+            background: white;
+            color: black;
+            width: 280px;
+            margin: 10px auto;
+            padding: 10px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>🎟️ Event Booking System</h2>
+
+<div class="form-box">
+
+    <input type="text" id="name" placeholder="Enter your name"><br>
+
+    <select id="event">
+        <option value="">Select Event</option>
+        <option>Music Concert</option>
+        <option>Tech Seminar</option>
+        <option>Sports Match</option>
+    </select><br>
+
+    <input type="date" id="date"><br>
+
+    <input type="number" id="seats" placeholder="Number of seats"><br>
+
+    <button onclick="bookEvent()">Book Now</button>
+
+</div>
+
+<p id="msg"></p>
+
+<div id="result"></div>
+
+<script>
+
+function bookEvent() {
+
+    let name = document.getElementById("name").value;
+    let event = document.getElementById("event").value;
+    let date = document.getElementById("date").value;
+    let seats = document.getElementById("seats").value;
+
+    let msg = document.getElementById("msg");
+    let result = document.getElementById("result");
+
+    msg.innerText = "";
+
+    // Validation
+    if (name == "" || event == "" || date == "" || seats == "") {
+        msg.innerText = "Please fill all fields!";
+        return;
+    }
+
+    msg.innerText = "Booking...";
+
+    setTimeout(function() {
+
+        msg.innerText = "✅ Booking Confirmed!";
+
+        let card = document.createElement("div");
+        card.className = "card";
+
+        card.innerHTML =
+            "<h4>" + name + "</h4>" +
+            "<p>Event: " + event + "</p>" +
+            "<p>Date: " + date + "</p>" +
+            "<p>Seats: " + seats + "</p>";
+
+        result.appendChild(card);
+
+    }, 1000);
+}
+
+</script>
+
+</body>
+</html>

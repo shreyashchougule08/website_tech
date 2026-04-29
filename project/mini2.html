@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Wallet</title>
+</head>
+<body>
+<center>
+
+<h2>💰 My Wallet</h2>
+<fieldset style="width:350px">
+<legend><b>Wallet Panel</b></legend>
+
+<h3>Balance: ₹ <span id="bal">0</span></h3>
+<hr>
+<b>Deposit Money</b><br><br>
+<input id="add" type="number" placeholder="Enter Amount">
+<br><br>
+<button onclick="deposit()">Add Money</button>
+
+<hr>
+<b>Pay / Withdraw</b><br><br>
+<input id="name" placeholder="Product Name">
+<br><br>
+<input id="pay" type="number" placeholder="Amount">
+<br><br>
+<button onclick="pay()">Pay Now</button>
+
+<p id="msg"></p>
+<hr>
+<b>History</b>
+<ul id="list"></ul>
+
+<br>
+<button onclick="resetWallet()">🔄 Reset Wallet</button>
+
+</fieldset>
+</center>
+<script>
+let bal=document.getElementById("bal");
+let list=document.getElementById("list");
+let msg=document.getElementById("msg");
+
+show();
+
+function deposit(){
+ let a=Number(document.getElementById("add").value);
+ if(a<=0){msg.innerText="Enter amount";return;}
+
+ let b=Number(localStorage.getItem("b"))||0;
+ b+=a;
+ localStorage.setItem("b",b);
+
+ save("➕ Added ₹"+a);
+ show();
+}
+
+function pay(){
+ let n=document.getElementById("name").value;
+ let a=Number(document.getElementById("pay").value);
+ let b=Number(localStorage.getItem("b"))||0;
+
+ if(n==""||a<=0){msg.innerText="Fill fields";return;}
+ if(a>b){msg.innerText="Low balance";return;}
+
+ b-=a;
+ localStorage.setItem("b",b);
+
+ save("🛒 "+n+" - ₹"+a);
+ show();
+}
+
+function save(t){
+ let d=JSON.parse(localStorage.getItem("h"))||[];
+ d.push(t);
+ localStorage.setItem("h",JSON.stringify(d));
+}
+
+function show(){
+ bal.innerText=Number(localStorage.getItem("b"))||0;
+ list.innerHTML="";
+ let d=JSON.parse(localStorage.getItem("h"))||[];
+ d.forEach(function(x){
+   let li=document.createElement("li");
+   li.innerText=x;
+   list.appendChild(li);
+ });
+}
+function resetWallet(){
+ localStorage.removeItem("b");
+ localStorage.removeItem("h");
+ msg.innerText="Wallet Reset Done";
+ show();
+}
+</script>
+</body>
+</html>

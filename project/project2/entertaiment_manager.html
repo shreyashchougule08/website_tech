@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Entertainment Manager</title>
+
+<style>
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #f4f6f9;
+    margin: 0;
+}
+
+
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    background: #343a40;
+    padding: 10px;
+}
+
+.navbar button {
+    background: none;
+    color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.container {
+    max-width: 500px;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+
+button.action {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.search { background: #007bff; color: white; }
+.save { background: #28a745; color: white; }
+.delete { background: #dc3545; color: white; }
+.add { background: #17a2b8; color: white; }
+
+
+.box { display: none; }
+
+
+.list-item {
+    background: #f8f9fa;
+    padding: 8px;
+    margin: 5px 0;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+</style>
+</head>
+
+<body>
+
+
+<div class="navbar">
+    <button onclick="showBox('movieBox')">🎬 Movies</button>
+    <button onclick="showBox('animeBox')">🎌 Anime</button>
+    <button onclick="showBox('noteBox')">📝 Notes</button>
+</div>
+
+<div class="container">
+
+
+<div id="movieBox" class="box">
+
+    <h2>🎬 Movie Search</h2>
+
+    <input id="searchBox" placeholder="Search movie...">
+    <button class="action search" id="searchBtn">Search</button>
+
+    <p id="result"></p>
+
+    <div id="addSection" style="display:none;">
+        <input id="newName" placeholder="Movie name">
+        <input id="newInfo" placeholder="Movie info">
+        <button class="action save" id="saveBtn">Save Movie</button>
+    </div>
+
+    <h3>⭐ Watchlist</h3>
+    <div id="watchlist"></div>
+
+</div>
+
+
+<div id="animeBox" class="box">
+
+    <h2>🎌 Anime List</h2>
+
+    <input id="animeInput" placeholder="Enter anime name">
+    <button class="action add" id="addAnimeBtn">Add Anime</button>
+
+    <div id="animeList"></div>
+
+</div>
+
+
+<div id="noteBox" class="box">
+
+    <h2>📝 Notes</h2>
+
+    <input id="noteInput" placeholder="Write note">
+    <button class="action add" id="addNoteBtn">Add Note</button>
+
+    <div id="noteList"></div>
+
+</div>
+
+</div>
+
+<script>
+
+let result = document.getElementById("result");
+let addSection = document.getElementById("addSection");
+let watchlistDiv = document.getElementById("watchlist");
+
+
+let movies = {
+  golmaal:"Comedy Movie 😂",
+  avengers:"Action Movie 💥",
+  bahubali:"Epic Movie ⚔"
+};
+
+let watchlist = [];
+
+
+document.getElementById("searchBtn").onclick = function(){
+
+  let text = document.getElementById("searchBox").value.toLowerCase();
+
+  if(movies[text]){
+    result.innerHTML =
+      movies[text] +
+      "<br><button class='action add' onclick='addWatchlist(\""+text+"\")'>⭐ Add</button>";
+
+    addSection.style.display="none";
+  }
+  else{
+    result.innerHTML = "Not found ❌ Add below";
+    addSection.style.display="block";
+    document.getElementById("newName").value=text;
+  }
+};
+
+
+document.getElementById("saveBtn").onclick = function(){
+
+  let name = document.getElementById("newName").value.toLowerCase();
+  let info = document.getElementById("newInfo").value;
+
+  movies[name] = info;
+
+  result.innerHTML = "✅ Movie Added";
+  addSection.style.display="none";
+};
+
+
+function addWatchlist(name){
+  if(!watchlist.includes(name)){
+    watchlist.push(name);
+  }
+  showWatchlist();
+}
+
+function showWatchlist(){
+  let html = "";
+
+  for(let i=0;i<watchlist.length;i++){
+    html += `<div class="list-item">
+      ${watchlist[i]}
+      <button class="delete" onclick='removeWatch("${watchlist[i]}")'>❌</button>
+    </div>`;
+  }
+
+  watchlistDiv.innerHTML = html;
+}
+
+function removeWatch(name){
+  watchlist = watchlist.filter(m => m !== name);
+  showWatchlist();
+}
+
+
+let animeArray = [];
+let animeListDiv = document.getElementById("animeList");
+
+document.getElementById("addAnimeBtn").onclick = function(){
+
+  let animeName = document.getElementById("animeInput").value;
+
+  if(animeName !== ""){
+    animeArray.push(animeName);
+  }
+
+  showAnime();
+};
+
+function showAnime(){
+  let html = "";
+
+  for(let i=0;i<animeArray.length;i++){
+    html += `<div class="list-item">🎌 ${animeArray[i]}</div>`;
+  }
+
+  animeListDiv.innerHTML = html;
+}
+
+
+let notesArray = [];
+let noteListDiv = document.getElementById("noteList");
+
+document.getElementById("addNoteBtn").onclick = function(){
+
+  let noteText = document.getElementById("noteInput").value;
+
+  if(noteText !== ""){
+    notesArray.push(noteText);
+  }
+
+  showNotes();
+};
+
+function showNotes(){
+  let html = "";
+
+  for(let i=0;i<notesArray.length;i++){
+    html += `<div class="list-item">📝 ${notesArray[i]}</div>`;
+  }
+
+  noteListDiv.innerHTML = html;
+}
+
+
+function showBox(id){
+  document.getElementById("movieBox").style.display="none";
+  document.getElementById("animeBox").style.display="none";
+  document.getElementById("noteBox").style.display="none";
+
+  document.getElementById(id).style.display="block";
+}
+
+
+showBox("movieBox");
+
+</script>
+
+</body>
+</html>
